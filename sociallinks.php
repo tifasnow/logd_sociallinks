@@ -32,7 +32,7 @@ function sociallinks_getmoduleinfo(){
             "user_instagram" => "Instagram Username|",
             "user_ko-fi" => "Ko-fi Username|",
             "user_livejournal" => "LiveJournal Username|",
-            "user_mastodon" => "Mastodon Username|",
+            "user_mastodon" => "Mastodon URL|",
             "user_patreon" => "Patreon Username|",
             "user_pinterest" => "Pinterest Username|",
             "user_reddit" => "Reddit Username|",
