@@ -38,6 +38,7 @@ function sociallinks_getmoduleinfo(){
             "user_reddit" => "Reddit Username|",
             "user_skype" => "Skype Username|",
             "user_snapchat" => "Snapchat Username|",
+            "user_sofurry" => "SoFurry Username|",
             "user_steam" => "Steam Username|",
             "user_telegram" => "Telegram Username|",
             "user_tiktok" => "TikTok Username|",
@@ -75,6 +76,7 @@ function sociallinks_getmoduleinfo(){
             "show_reddit" => "Show Reddit icon?,bool|1",
             "show_skype" => "Show Skype icon?,bool|1",
             "show_snapchat" => "Show Snapchat icon?,bool|1",
+            "show_sofurry" => "Show SoFurry icon?,bool|1",
             "show_steam" => "Show Steam icon?,bool|1",
             "show_telegram" => "Show Telegram icon?,bool|1",
             "show_tiktok" => "Show TikTok icon?,bool|1",
@@ -131,6 +133,7 @@ function sociallinks_dohook($hookname, $args){
             output_link("reddit",$args['acctid']);
             output_link("skype",$args['acctid']);
             output_link("snapchat",$args['acctid']);
+            output_link("sofurry",$args['acctid']);
             output_link("steam",$args['acctid']);
             output_link("telegram",$args['acctid']);
             output_link("tiktok",$args['acctid']);
@@ -272,6 +275,11 @@ function output_link(string $linktype, int $acctid): void
             'link' => "https://www.snapchat.com/add/__USER__",
             'image' => "modules/sociallinks/images/snapchat.svg",
             'title' => 'Snapchat'
+        ),
+        'sofurry' => array(
+            'link' => "https://www.sofurry.com/__USER__",
+            'image' => "modules/sociallinks/images/sofurry.svg",
+            'title' => 'SoFurry'
         ),
         'steam' => array(
             'link' => "https://steamcommunity.com/id/__USER__",
