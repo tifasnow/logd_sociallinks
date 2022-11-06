@@ -3,8 +3,8 @@
 An optional module for PHP versions of Legend of the Green Dragon
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
 To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
-CC-BY-SA 4.0 github:aimeesunflower https://github.com/aimeesunflower/logd_sociallinks/
-*/
+    CC-BY-SA 4.0 github:aimeesunflower https://github.com/aimeesunflower/logd_sociallinks/
+    */
 
 function sociallinks_getmoduleinfo(){
     $info = array (
@@ -135,122 +135,122 @@ function sociallinks_dohook($hookname, $args){
             $user_website = get_module_pref("user_website", "sociallinks", $args['acctid']);
             $user_website = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_website));
 
-            if ($user_a03>"" || $user_battlenet>"" || $user_blogger>"" || $user_deviantart>"" || $user_discord>"" || $user_dribbble>"" || $user_facebook>"" || $user_flickr>"" || $user_flist>"" || $user_furaffinity>"" || $user_github>"" || $user_mastodon>"" || $user_reddit>"" || $user_skype>"" || $user_snapchat>"" || $user_steam>"" || $user_tumblr>"" || $user_twitter>"" || $user_vimeo>"" || $user_youtube>"" || $user_website>"" || ){
+            if ($user_a03>"" || $user_battlenet>"" || $user_blogger>"" || $user_deviantart>"" || $user_discord>"" || $user_dribbble>"" || $user_facebook>"" || $user_flickr>"" || $user_flist>"" || $user_furaffinity>"" || $user_github>"" || $user_mastodon>"" || $user_patreon>"" || $user_pinterest>"" || $user_reddit>"" || $user_skype>"" || $user_snapchat>"" || $user_steam>"" || $user_tumblr>"" || $user_twitter>"" || $user_vimeo>"" || $user_youtube>"" || $user_website>"" || ){
                 output("`n`n`c`b`@Social Links`0`b`c`n");
             }
             if (get_module_setting("show_ao3")==1){
                 if ($user_a03>""){
-                    rawoutput("<a href='https://archiveofourown.org/users/$user_a03' target='_blank'><img src='modules/sociallinks/images/ao3.png' alt='Archive of Our Own' title='Archive of Our Own' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://archiveofourown.org/users/$user_a03' target='_blank'><img src='modules/sociallinks/images/ao3.svg' alt='Archive of Our Own' title='Archive of Our Own' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_battlenet")==1){
                 if ($user_battlenet>""){
-                    rawoutput("<a href='https://battle.net/$user_battlenet' target='_blank'><img src='modules/sociallinks/images/battlenet.png' alt='Battle.net' title='Battle.net' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://battle.net/$user_battlenet' target='_blank'><img src='modules/sociallinks/images/battlenet.svg' alt='Battle.net' title='Battle.net' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_blogger")==1){
                 if ($user_blogger>""){
-                    rawoutput("<a href='https://$user_blogger.blogspot.com' target='_blank'><img src='modules/sociallinks/images/blogger.png' alt='Blogger' title='Blogger' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://$user_blogger.blogspot.com' target='_blank'><img src='modules/sociallinks/images/blogger.svg' alt='Blogger' title='Blogger' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_deviantart")==1){
                 if ($user_deviantart>""){
-                    rawoutput("<a href='https://$user_deviantart.deviantart.com' target='_blank'><img src='modules/sociallinks/images/deviantart.png' alt='DeviantArt' title='DeviantArt' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://$user_deviantart.deviantart.com' target='_blank'><img src='modules/sociallinks/images/deviantart.svg' alt='DeviantArt' title='DeviantArt' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_discord")==1){
                 if ($user_discord>""){
-                    rawoutput("<a href='https://discord.gg/$user_discord' target='_blank'><img src='modules/sociallinks/images/discord.png' alt='Discord' title='Discord' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://discord.gg/$user_discord' target='_blank'><img src='modules/sociallinks/images/discord.svg' alt='Discord' title='Discord' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_dribbble")==1){
                 if ($user_dribbble>""){
-                    rawoutput("<a href='https://dribbble.com/$user_dribbble' target='_blank'><img src='modules/sociallinks/images/dribbble.png' alt='Dribbble' title='Dribbble' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://dribbble.com/$user_dribbble' target='_blank'><img src='modules/sociallinks/images/dribbble.svg' alt='Dribbble' title='Dribbble' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_facebook")==1){
                 if ($user_facebook>""){
-                    rawoutput("<a href='https://facebook.com/$user_facebook' target='_blank'><img src='modules/sociallinks/images/facebook.png' alt='Facebook' title='Facebook' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://facebook.com/$user_facebook' target='_blank'><img src='modules/sociallinks/images/facebook.svg' alt='Facebook' title='Facebook' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_flickr")==1){
                 if ($user_flickr>""){
-                    rawoutput("<a href='https://flickr.com/$user_flickr' target='_blank'><img src='modules/sociallinks/images/flickr.png' alt='Flickr' title='Flickr' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://flickr.com/$user_flickr' target='_blank'><img src='modules/sociallinks/images/flickr.svg' alt='Flickr' title='Flickr' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_flist")==1){
                 if ($user_flist>""){
-                    rawoutput("<a href='https://www.f-list.net/c/$user_flist' target='_blank'><img src='modules/sociallinks/images/flist.png' alt='F-List' title='F-List' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.f-list.net/c/$user_flist' target='_blank'><img src='modules/sociallinks/images/flist.svg' alt='F-List' title='F-List' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_furaffinity")==1){
                 if ($user_furaffinity>""){
-                    rawoutput("<a href='https://www.furaffinity.net/user/$user_furaffinity' target='_blank'><img src='modules/sociallinks/images/furaffinity.png' alt='FurAffinity' title='FurAffinity' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.furaffinity.net/user/$user_furaffinity' target='_blank'><img src='modules/sociallinks/images/furaffinity.svg' alt='FurAffinity' title='FurAffinity' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_github")==1){
                 if ($user_github>""){
-                    rawoutput("<a href='https://www.github.com/$user_github' target='_blank'><img src='modules/sociallinks/images/github.png' alt='GitHub' title='GitHub' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.github.com/$user_github' target='_blank'><img src='modules/sociallinks/images/github.svg' alt='GitHub' title='GitHub' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_mastodon")==1){
                 if ($user_mastodon>""){
-                    rawoutput("<a href='https://mastodon.social/@$user_mastodon' target='_blank'><img src='modules/sociallinks/images/mastodon.png' alt='Mastodon' title='Mastodon' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://mastodon.social/@$user_mastodon' target='_blank'><img src='modules/sociallinks/images/mastodon.svg' alt='Mastodon' title='Mastodon' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_patreon")==1){
                 if ($user_patreon>""){
-                    rawoutput("<a href='https://www.patreon.com/$user_patreon' target='_blank'><img src='modules/sociallinks/images/patreon.png' alt='Patreon' title='Patreon' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.patreon.com/$user_patreon' target='_blank'><img src='modules/sociallinks/images/patreon.svg' alt='Patreon' title='Patreon' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_pinterest")==1){
                 if ($user_pinterest>""){
-                    rawoutput("<a href='https://pinterest.com/$user_pinterest' target='_blank'><img src='modules/sociallinks/images/pinterest.png' alt='Pinterest' title='Pinterest' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://pinterest.com/$user_pinterest' target='_blank'><img src='modules/sociallinks/images/pinterest.svg' alt='Pinterest' title='Pinterest' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_reddit")==1){
                 if ($user_reddit>""){
-                    rawoutput("<a href='https://www.reddit.com/user/$user_reddit' target='_blank'><img src='modules/sociallinks/images/reddit.png' alt='Reddit' title='Reddit' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.reddit.com/user/$user_reddit' target='_blank'><img src='modules/sociallinks/images/reddit.svg' alt='Reddit' title='Reddit' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_skype")==1){
                 if ($user_skype>""){
-                    rawoutput("<a href='skype:$user_skype?chat' target='_blank'><img src='modules/sociallinks/images/skype.png' alt='Skype' title='Skype' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='skype:$user_skype?chat' target='_blank'><img src='modules/sociallinks/images/skype.svg' alt='Skype' title='Skype' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_snapchat")==1){
                 if ($user_snapchat>""){
-                    rawoutput("<a href='https://www.snapchat.com/add/$user_snapchat' target='_blank'><img src='modules/sociallinks/images/snapchat.png' alt='Snapchat' title='Snapchat' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.snapchat.com/add/$user_snapchat' target='_blank'><img src='modules/sociallinks/images/snapchat.svg' alt='Snapchat' title='Snapchat' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_steam")==1){
                 if ($user_steam>""){
-                    rawoutput("<a href='https://steamcommunity.com/id/$user_steam' target='_blank'><img src='modules/sociallinks/images/steam.png' alt='Steam' title='Steam' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://steamcommunity.com/id/$user_steam' target='_blank'><img src='modules/sociallinks/images/steam.svg' alt='Steam' title='Steam' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_tumblr")==1){
                 if ($user_tumblr>""){
-                    rawoutput("<a href='https://$user_tumblr.tumblr.com' target='_blank'><img src='modules/sociallinks/images/tumblr.png' alt='Tumblr' title='Tumblr' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://$user_tumblr.tumblr.com' target='_blank'><img src='modules/sociallinks/images/tumblr.svg' alt='Tumblr' title='Tumblr' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_twitter")==1){
                 if ($user_twitter>""){
-                    rawoutput("<a href='https://twitter.com/$user_twitter' target='_blank'><img src='modules/sociallinks/images/twitter.png' alt='Twitter' title='Twitter' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://twitter.com/$user_twitter' target='_blank'><img src='modules/sociallinks/images/twitter.svg' alt='Twitter' title='Twitter' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_vimeo")==1){
                 if ($user_vimeo>""){
-                    rawoutput("<a href='https://vimeo.com/$user_vimeo' target='_blank'><img src='modules/sociallinks/images/vimeo.png' alt='Vimeo' title='Vimeo' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://vimeo.com/$user_vimeo' target='_blank'><img src='modules/sociallinks/images/vimeo.svg' alt='Vimeo' title='Vimeo' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_youtube")==1){
                 if ($user_youtube>""){
-                    rawoutput("<a href='https://www.youtube.com/user/$user_youtube' target='_blank'><img src='modules/sociallinks/images/youtube.png' alt='YouTube' title='YouTube' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='https://www.youtube.com/user/$user_youtube' target='_blank'><img src='modules/sociallinks/images/youtube.svg' alt='YouTube' title='YouTube' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if get_module_setting("show_website")==1){
                 if ($user_website>""){
-                    rawoutput("<a href='$user_website' target='_blank'><img src='modules/sociallinks/images/website.png' alt='Website' title='Website' style='width: 32px; height: 32px;'></a>");
+                    rawoutput("<a href='$user_website' target='_blank'><img src='modules/sociallinks/images/link.svg' alt='Website' title='Website' style='width: 32px; height: 32px;'></a>");
                 }
             }
             rawoutput("</td></tr></table>");
