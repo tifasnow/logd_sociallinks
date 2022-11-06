@@ -3,7 +3,7 @@
 An optional module for PHP versions of Legend of the Green Dragon
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
 To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
-    CC-BY-SA 4.0 github:aimeesunflower https://github.com/aimeesunflower/logd_sociallinks/
+    CC-BY-SA 4.0 github:tifasnow https://github.com/tifasnow/logd_sociallinks/
     */
 
 function sociallinks_getmoduleinfo(){
@@ -27,6 +27,7 @@ function sociallinks_getmoduleinfo(){
             "user_flist" => "F-List Username|",
             "user_furaffinity" => "FurAffinity Username|",
             "user_github" => "GitHub Username|",
+            "user_instagram" => "Instagram Username|",
             "user_mastodon" => "Mastodon Username|",
             "user_patreon" => "Patreon Username|",
             "user_pinterest" => "Pinterest Username|",
@@ -34,6 +35,7 @@ function sociallinks_getmoduleinfo(){
             "user_skype" => "Skype Username|",
             "user_snapchat" => "Snapchat Username|",
             "user_steam" => "Steam Username|",
+            "user_tiktok" => "TikTok Username|",
             "user_tumblr" => "Tumblr Username|",
             "user_twitter" => "Twitter Username|",
             "user_vimeo" => "Vimeo Username|",
@@ -53,6 +55,7 @@ function sociallinks_getmoduleinfo(){
             "show_flist" => "Show F-List icon?,bool|1",
             "show_furaffinity" => "Show FurAffinity icon?,bool|1",
             "show_github" => "Show GitHub icon?,bool|1",
+            "show_instagram" => "Show Instagram icon?,bool|1",
             "show_mastodon" => "Show Mastodon icon?,bool|1",
             "show_patreon" => "Show Patreon icon?,bool|1",
             "show_pinterest" => "Show Pinterest icon?,bool|1",
@@ -60,6 +63,7 @@ function sociallinks_getmoduleinfo(){
             "show_skype" => "Show Skype icon?,bool|1",
             "show_snapchat" => "Show Snapchat icon?,bool|1",
             "show_steam" => "Show Steam icon?,bool|1",
+            "show_tiktok" => "Show TikTok icon?,bool|1",
             "show_tumblr" => "Show Tumblr icon?,bool|1",
             "show_twitter" => "Show Twitter icon?,bool|1",
             "show_vimeo" => "Show Vimeo icon?,bool|1",
@@ -87,9 +91,6 @@ function sociallinks_dohook($hookname, $args){
     switch ($hookname) {
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
-
-            $user_deviantart = get_module_pref("user_deviantart", "sociallinks", $args['acctid']);
-            $user_deviantart = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_deviantart));
             $user_dribbble = get_module_pref("user_dribbble", "sociallinks", $args['acctid']);
             $user_dribbble = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_dribbble));
             $user_facebook = get_module_pref("user_facebook", "sociallinks", $args['acctid']);
@@ -104,6 +105,8 @@ function sociallinks_dohook($hookname, $args){
             $user_github = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_github));
             $user_mastodon = get_module_pref("user_mastodon", "sociallinks", $args['acctid']);
             $user_mastodon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_mastodon));
+            $user_instagram = get_module_pref("user_instagram", "sociallinks", $args['acctid']);
+            $user_instagram = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_instagram));
             $user_patreon = get_module_pref("user_patreon", "sociallinks", $args['acctid']);
             $user_patreon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_patreon));
             $user_pinterest = get_module_pref("user_pinterest", "sociallinks", $args['acctid']);
@@ -116,6 +119,8 @@ function sociallinks_dohook($hookname, $args){
             $user_snapchat = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_snapchat));
             $user_steam = get_module_pref("user_steam", "sociallinks", $args['acctid']);
             $user_steam = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_steam));
+            $user_tiktok = get_module_pref("user_tiktok", "sociallinks", $args['acctid']);
+            $user_tiktok = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tiktok));
             $user_tumblr = get_module_pref("user_tumblr", "sociallinks", $args['acctid']);
             $user_tumblr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tumblr));
             $user_twitter = get_module_pref("user_twitter", "sociallinks", $args['acctid']);
@@ -272,6 +277,7 @@ function output_link(string $linktype, int $acctid): void
         )
 
     );
+
     $uservar="user_$linktype";
     $var = get_module_pref($uservar, "sociallinks", $acctid);
     $var = stripslashes(preg_replace("'[\"\'\\><@?*&; ]'","",$var));
