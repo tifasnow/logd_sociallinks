@@ -108,7 +108,6 @@ function sociallinks_dohook($hookname, $args){
     switch ($hookname) {
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
-
             output("`n`n`c`b`@Social Links`0`b`c`n");
             output_link("ao3", $args['acctid']);
             output_link("battlenet",$args['acctid']);
@@ -143,7 +142,6 @@ function sociallinks_dohook($hookname, $args){
             output_link("weasyl",$args['acctid']);
             output_link("wordpress",$args['acctid']);
             output_link("website",$args['acctid']);
-
             rawoutput("</td></tr></table>");
 
             break;
