@@ -88,14 +88,8 @@ function sociallinks_dohook($hookname, $args){
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
 
-            $user_battlenet = get_module_pref("user_battlenet", "sociallinks", $args['acctid']);
-            $user_battlenet = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_battlenet));
-            $user_blogger = get_module_pref("user_blogger", "sociallinks", $args['acctid']);
-            $user_blogger = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_blogger));
             $user_deviantart = get_module_pref("user_deviantart", "sociallinks", $args['acctid']);
             $user_deviantart = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_deviantart));
-            $user_discord = get_module_pref("user_discord", "sociallinks", $args['acctid']);
-            $user_discord = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_discord));
             $user_dribbble = get_module_pref("user_dribbble", "sociallinks", $args['acctid']);
             $user_dribbble = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_dribbble));
             $user_facebook = get_module_pref("user_facebook", "sociallinks", $args['acctid']);
@@ -136,21 +130,9 @@ function sociallinks_dohook($hookname, $args){
             output("`n`n`c`b`@Social Links`0`b`c`n");
             output_link("ao3", $args['acctid']);
             output_link("battlenet",$args['acctid']);
-            if (get_module_setting("show_blogger")==1){
-                if ($user_blogger>""){
-                    rawoutput("<a href='https://$user_blogger.blogspot.com' target='_blank'><img src='modules/sociallinks/images/blogger.svg' alt='Blogger' title='Blogger' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_deviantart")==1){
-                if ($user_deviantart>""){
-                    rawoutput("<a href='https://$user_deviantart.deviantart.com' target='_blank'><img src='modules/sociallinks/images/deviantart.svg' alt='DeviantArt' title='DeviantArt' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_discord")==1){
-                if ($user_discord>""){
-                    rawoutput("<a href='https://discord.gg/$user_discord' target='_blank'><img src='modules/sociallinks/images/discord.svg' alt='Discord' title='Discord' style='width: 32px; height: 32px;'></a>");
-                }
-            }
+            output_link("blogger", $args['acctid']);
+            output_link("discord",$args['acctid']);
+            output_link("deviantart",$args['acctid']);
             if (get_module_setting("show_dribbble")==1){
                 if ($user_dribbble>""){
                     rawoutput("<a href='https://dribbble.com/$user_dribbble' target='_blank'><img src='modules/sociallinks/images/dribbble.svg' alt='Dribbble' title='Dribbble' style='width: 32px; height: 32px;'></a>");
@@ -267,29 +249,48 @@ function output_link(string $linktype, int $acctid): void
             'link' => "https://archiveofourown.org/users/__USER__",
             'image' => "modules/sociallinks/images/ao3.svg",
             'title' => 'Archive of Our Own'
-
         ),
         'battlenet' => array(
             'link' => "https://battle.net/__USER__",
             'image' => "modules/sociallinks/images/battlenet.svg",
             'title' => 'Battle.NET'
 
+        ),
+        'blogger' => array(
+            'link' => "https://__USER__.blogspot.com",
+            'image' => "modules/sociallinks/images/blogger.svg",
+            'title' => 'Blogger'
+        ),
+        'discord' => array(
+            'image'=>'modules/sociallinks/images/discord.svg',
+            'title' =>'Discord',
+        ),
+        'deviantart' => array(
+            'link' => "https://__USER__.deviantart.com",
+            'image' => "modules/sociallinks/images/deviantart.svg",
+            'title' => 'DeviantArt'
         )
-
 
     );
     $uservar="user_$linktype";
-    $$uservar = get_module_pref($uservar, "sociallinks", $acctid);
-    $$uservar = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$$uservar));
+    $var = get_module_pref($uservar, "sociallinks", $acctid);
+    $var = stripslashes(preg_replace("'[\"\'\\><@?*&; ]'","",$var));
     if(isset($links_arr[$linktype])) {
         $link_details = $links_arr[$linktype];
-        $link = $link_details['link'];
 
-        $link = str_replace("__USER__", $$uservar, $link);
-        if ($$uservar > "" && (get_module_setting("show_$linktype") == 1) ) {
+        if(isset($link_details['link'])) {
+            $link = $link_details['link'];
+
+            $link = str_replace("__USER__", $var, $link);
+            if ($var > "" && (get_module_setting("show_$linktype") == 1)) {
+                $image = $link_details['image'];
+                $title = $link_details['title'];
+                rawoutput("<a href='$link' target='_blank'><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'></a>");
+            }
+        } else if ($var > "" && (get_module_setting("show_$linktype") == 1)) {
             $image = $link_details['image'];
             $title = $link_details['title'];
-            rawoutput("<a href='$link' target='_blank'><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'></a>");
+            rawoutput("<span><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'>$var</span>");
         }
     }
 }
