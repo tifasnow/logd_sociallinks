@@ -281,15 +281,11 @@ function output_link(string $linktype, int $acctid): void
     $uservar="user_$linktype";
     $$uservar = get_module_pref($uservar, "sociallinks", $acctid);
     $$uservar = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$$uservar));
-    debuglog("links is: ".print_r($links_arr,true));
-    debuglog("uservar is $uservar");
-    debuglog("is set? ".isset($links_arr[$linktype]));
     if(isset($links_arr[$linktype])) {
         $link_details = $links_arr[$linktype];
         $link = $link_details['link'];
 
         $link = str_replace("__USER__", $$uservar, $link);
-        debuglog("Uservar: ".$$uservar." link: ".$link);
         if ($$uservar > "" && (get_module_setting("show_$linktype") == 1) ) {
             $image = $link_details['image'];
             $title = $link_details['title'];
