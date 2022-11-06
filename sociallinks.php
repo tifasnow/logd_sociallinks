@@ -291,14 +291,14 @@ function output_link(string $linktype): void
 {
     global $links;
     $uservar="user_$linktype";
-    $link_details=$links[$linktype];
-    $link=$link_details['link'];
+    if(isset($links[$linktype])) {
+        $link_details = $links[$linktype];
+        $link = $link_details['link'];
 
-    $link=str_replace("__USER__",$$uservar,$link);
-    if (get_module_setting("show_$linktype") == 1) {
-        if ($$uservar > "") {
-            $image=$link_details['image'];
-            $title=$link_details['title'];
+        $link = str_replace("__USER__", $$uservar, $link);
+        if ($$uservar > "" && (get_module_setting("show_$linktype") === 1) ) {
+            $image = $link_details['image'];
+            $title = $link_details['title'];
             rawoutput("<a href='$link' target='_blank'><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'></a>");
         }
     }
