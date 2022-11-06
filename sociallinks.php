@@ -253,7 +253,7 @@ function sociallinks_dohook($hookname, $args){
                     rawoutput("<a href='$user_website' target='_blank'><img src='modules/sociallinks/images/website.png' alt='Website' title='Website' style='width: 32px; height: 32px;'></a>");
                 }
             }
-            rawoutput("</div>");
+            rawoutput("</td></tr></table>");
         }
             break;
         case "footer-prefs":
