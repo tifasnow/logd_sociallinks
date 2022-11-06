@@ -89,58 +89,66 @@ function sociallinks_dohook($hookname, $args){
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
 
             $user_ao3 = get_module_pref("user_ao3", "sociallinks", $args['acctid']);
-            $user_ao3 = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_ao3));
+            $user_ao3 = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_ao3));
             $user_battlenet = get_module_pref("userbattlenet", "sociallinks", $args['acctid']);
-            $user_battlenet = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$userbattlenet));
+            $user_battlenet = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_battlenet));
             $user_blogger = get_module_pref("user_blogger", "sociallinks", $args['acctid']);
-            $user_blogger = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_blogger));
+            $user_blogger = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_blogger));
             $user_deviantart = get_module_pref("user_deviantart", "sociallinks", $args['acctid']);
-            $user_deviantart = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_deviantart));
+            $user_deviantart = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_deviantart));
             $user_discord = get_module_pref("user_discord", "sociallinks", $args['acctid']);
-            $user_discord = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_discord));
+            $user_discord = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_discord));
             $user_dribbble = get_module_pref("user_dribbble", "sociallinks", $args['acctid']);
-            $user_dribbble = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_dribbble));
+            $user_dribbble = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_dribbble));
             $user_facebook = get_module_pref("user_facebook", "sociallinks", $args['acctid']);
-            $user_facebook = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_facebook));
+            $user_facebook = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_facebook));
             $user_flickr = get_module_pref("user_flickr", "sociallinks", $args['acctid']);
-            $user_flickr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flickr));
+            $user_flickr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flickr));
             $user_flist = get_module_pref("user_flist", "sociallinks", $args['acctid']);
-            $user_flist = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flist));
+            $user_flist = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flist));
             $user_furaffinity = get_module_pref("user_furaffinity", "sociallinks", $args['acctid']);
-            $user_furaffinity = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_furaffinity));
+            $user_furaffinity = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_furaffinity));
             $user_github = get_module_pref("user_github", "sociallinks", $args['acctid']);
-            $user_github = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_github));
+            $user_github = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_github));
             $user_mastodon = get_module_pref("user_mastodon", "sociallinks", $args['acctid']);
-            $user_mastodon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_mastodon));
+            $user_mastodon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_mastodon));
             $user_patreon = get_module_pref("user_patreon", "sociallinks", $args['acctid']);
-            $user_patreon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_patreon));
+            $user_patreon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_patreon));
             $user_pinterest = get_module_pref("user_pinterest", "sociallinks", $args['acctid']);
-            $user_pinterest = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_pinterest));
+            $user_pinterest = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_pinterest));
             $user_reddit = get_module_pref("user_reddit", "sociallinks", $args['acctid']);
-            $user_reddit = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_reddit));
+            $user_reddit = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_reddit));
             $user_skype = get_module_pref("user_skype", "sociallinks", $args['acctid']);
-            $user_skype = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_skype));
+            $user_skype = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_skype));
             $user_snapchat = get_module_pref("user_snapchat", "sociallinks", $args['acctid']);
-            $user_snapchat = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_snapchat));
+            $user_snapchat = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_snapchat));
             $user_steam = get_module_pref("user_steam", "sociallinks", $args['acctid']);
-            $user_steam = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_steam));
+            $user_steam = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_steam));
             $user_tumblr = get_module_pref("user_tumblr", "sociallinks", $args['acctid']);
-            $user_tumblr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tumblr));
+            $user_tumblr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tumblr));
             $user_twitter = get_module_pref("user_twitter", "sociallinks", $args['acctid']);
-            $user_twitter = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_twitter));
+            $user_twitter = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_twitter));
             $user_vimeo = get_module_pref("user_vimeo", "sociallinks", $args['acctid']);
-            $user_vimeo = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_vimeo));
+            $user_vimeo = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_vimeo));
             $user_youtube = get_module_pref("user_youtube", "sociallinks", $args['acctid']);
-            $user_youtube = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_youtube));
+            $user_youtube = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_youtube));
             $user_website = get_module_pref("user_website", "sociallinks", $args['acctid']);
-            $user_website = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_website));
+            $user_website = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_website));
 
-            if ($user_a03>"" || $user_battlenet>"" || $user_blogger>"" || $user_deviantart>"" || $user_discord>"" || $user_dribbble>"" || $user_facebook>"" || $user_flickr>"" || $user_flist>"" || $user_furaffinity>"" || $user_github>"" || $user_mastodon>"" || $user_patreon>"" || $user_pinterest>"" || $user_reddit>"" || $user_skype>"" || $user_snapchat>"" || $user_steam>"" || $user_tumblr>"" || $user_twitter>"" || $user_vimeo>"" || $user_youtube>"" || $user_website>"" || ){
+            if ($user_ao3 >""
+                || $user_battlenet>"" || $user_blogger>"" || $user_deviantart>""
+                || $user_discord>"" || $user_dribbble>"" || $user_facebook>""
+                || $user_flickr>"" || $user_flist>"" || $user_furaffinity>""
+                || $user_github>"" || $user_mastodon>"" || $user_patreon>""
+                || $user_pinterest>"" || $user_reddit>"" || $user_skype>""
+                || $user_snapchat>"" || $user_steam>"" || $user_tumblr>""
+                || $user_twitter>"" || $user_vimeo>"" || $user_youtube>""
+                || $user_website>""){
                 output("`n`n`c`b`@Social Links`0`b`c`n");
             }
             if (get_module_setting("show_ao3")==1){
-                if ($user_a03>""){
-                    rawoutput("<a href='https://archiveofourown.org/users/$user_a03' target='_blank'><img src='modules/sociallinks/images/ao3.svg' alt='Archive of Our Own' title='Archive of Our Own' style='width: 32px; height: 32px;'></a>");
+                if ($user_ao3>""){
+                    rawoutput("<a href='https://archiveofourown.org/users/$user_ao3' target='_blank'><img src='modules/sociallinks/images/ao3.svg' alt='Archive of Our Own' title='Archive of Our Own' style='width: 32px; height: 32px;'></a>");
                 }
             }
             if (get_module_setting("show_battlenet")==1){
@@ -248,13 +256,13 @@ function sociallinks_dohook($hookname, $args){
                     rawoutput("<a href='https://www.youtube.com/user/$user_youtube' target='_blank'><img src='modules/sociallinks/images/youtube.svg' alt='YouTube' title='YouTube' style='width: 32px; height: 32px;'></a>");
                 }
             }
-            if get_module_setting("show_website")==1){
+            if (get_module_setting("show_website")==1){
                 if ($user_website>""){
                     rawoutput("<a href='$user_website' target='_blank'><img src='modules/sociallinks/images/link.svg' alt='Website' title='Website' style='width: 32px; height: 32px;'></a>");
                 }
             }
             rawoutput("</td></tr></table>");
-        }
+
             break;
         case "footer-prefs":
             $args['prefs']['prefs-sociallinks'] = array(
