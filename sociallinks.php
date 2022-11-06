@@ -26,8 +26,12 @@ function sociallinks_getmoduleinfo(){
             "user_flickr" => "Flickr Username|",
             "user_flist" => "F-List Username|",
             "user_furaffinity" => "FurAffinity Username|",
+            "user_furrynetwork" => "Furry Network Username|",
             "user_github" => "GitHub Username|",
+            "user_goodreads" => "Goodreads Username|",
             "user_instagram" => "Instagram Username|",
+            "user_ko-fi" => "Ko-fi Username|",
+            "user_livejournal" => "LiveJournal Username|",
             "user_mastodon" => "Mastodon Username|",
             "user_patreon" => "Patreon Username|",
             "user_pinterest" => "Pinterest Username|",
@@ -35,12 +39,17 @@ function sociallinks_getmoduleinfo(){
             "user_skype" => "Skype Username|",
             "user_snapchat" => "Snapchat Username|",
             "user_steam" => "Steam Username|",
+            "user_telegram" => "Telegram Username|",
             "user_tiktok" => "TikTok Username|",
             "user_tumblr" => "Tumblr Username|",
             "user_twitter" => "Twitter Username|",
+            "user_vero" => "Vero Username|",
             "user_vimeo" => "Vimeo Username|",
             "user_youtube" => "YouTube Username|",
+            "user_weasyl" => "Weasyl Username|",
+            "user_wordpress" => "WordPress Username|",
             "user_website" => "Website URL|",
+            
         ),
         "settings" => array(
             "Social Links Settings,title",
@@ -54,8 +63,12 @@ function sociallinks_getmoduleinfo(){
             "show_flickr" => "Show Flickr icon?,bool|1",
             "show_flist" => "Show F-List icon?,bool|1",
             "show_furaffinity" => "Show FurAffinity icon?,bool|1",
+            "show_furrynetwork" => "Show Furry Network icon?,bool|1",
+            "show_goodreads" => "Show Goodreads icon?,bool|1",
             "show_github" => "Show GitHub icon?,bool|1",
             "show_instagram" => "Show Instagram icon?,bool|1",
+            "show_ko-fi" => "Show Ko-fi icon?,bool|1",
+            "show_livejournal" => "Show LiveJournal icon?,bool|1",
             "show_mastodon" => "Show Mastodon icon?,bool|1",
             "show_patreon" => "Show Patreon icon?,bool|1",
             "show_pinterest" => "Show Pinterest icon?,bool|1",
@@ -63,11 +76,15 @@ function sociallinks_getmoduleinfo(){
             "show_skype" => "Show Skype icon?,bool|1",
             "show_snapchat" => "Show Snapchat icon?,bool|1",
             "show_steam" => "Show Steam icon?,bool|1",
+            "show_telegram" => "Show Telegram icon?,bool|1",
             "show_tiktok" => "Show TikTok icon?,bool|1",
             "show_tumblr" => "Show Tumblr icon?,bool|1",
             "show_twitter" => "Show Twitter icon?,bool|1",
+            "show_vero" => "Show Vero icon?,bool|1",	
             "show_vimeo" => "Show Vimeo icon?,bool|1",
             "show_youtube" => "Show YouTube icon?,bool|1",
+            "show_weasyl" => "Show Weasyl icon?,bool|1",
+            "show_wordpress" => "Show WordPress icon?,bool|1",
             "show_website" => "Show Website icon?,bool|1",
         ),
     );
@@ -91,46 +108,6 @@ function sociallinks_dohook($hookname, $args){
     switch ($hookname) {
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
-            $user_dribbble = get_module_pref("user_dribbble", "sociallinks", $args['acctid']);
-            $user_dribbble = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_dribbble));
-            $user_facebook = get_module_pref("user_facebook", "sociallinks", $args['acctid']);
-            $user_facebook = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_facebook));
-            $user_flickr = get_module_pref("user_flickr", "sociallinks", $args['acctid']);
-            $user_flickr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flickr));
-            $user_flist = get_module_pref("user_flist", "sociallinks", $args['acctid']);
-            $user_flist = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_flist));
-            $user_furaffinity = get_module_pref("user_furaffinity", "sociallinks", $args['acctid']);
-            $user_furaffinity = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_furaffinity));
-            $user_github = get_module_pref("user_github", "sociallinks", $args['acctid']);
-            $user_github = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_github));
-            $user_mastodon = get_module_pref("user_mastodon", "sociallinks", $args['acctid']);
-            $user_mastodon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_mastodon));
-            $user_instagram = get_module_pref("user_instagram", "sociallinks", $args['acctid']);
-            $user_instagram = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_instagram));
-            $user_patreon = get_module_pref("user_patreon", "sociallinks", $args['acctid']);
-            $user_patreon = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_patreon));
-            $user_pinterest = get_module_pref("user_pinterest", "sociallinks", $args['acctid']);
-            $user_pinterest = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_pinterest));
-            $user_reddit = get_module_pref("user_reddit", "sociallinks", $args['acctid']);
-            $user_reddit = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_reddit));
-            $user_skype = get_module_pref("user_skype", "sociallinks", $args['acctid']);
-            $user_skype = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_skype));
-            $user_snapchat = get_module_pref("user_snapchat", "sociallinks", $args['acctid']);
-            $user_snapchat = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_snapchat));
-            $user_steam = get_module_pref("user_steam", "sociallinks", $args['acctid']);
-            $user_steam = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_steam));
-            $user_tiktok = get_module_pref("user_tiktok", "sociallinks", $args['acctid']);
-            $user_tiktok = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tiktok));
-            $user_tumblr = get_module_pref("user_tumblr", "sociallinks", $args['acctid']);
-            $user_tumblr = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_tumblr));
-            $user_twitter = get_module_pref("user_twitter", "sociallinks", $args['acctid']);
-            $user_twitter = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_twitter));
-            $user_vimeo = get_module_pref("user_vimeo", "sociallinks", $args['acctid']);
-            $user_vimeo = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_vimeo));
-            $user_youtube = get_module_pref("user_youtube", "sociallinks", $args['acctid']);
-            $user_youtube = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_youtube));
-            $user_website = get_module_pref("user_website", "sociallinks", $args['acctid']);
-            $user_website = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_website));
 
             output("`n`n`c`b`@Social Links`0`b`c`n");
             output_link("ao3", $args['acctid']);
@@ -138,96 +115,35 @@ function sociallinks_dohook($hookname, $args){
             output_link("blogger", $args['acctid']);
             output_link("discord",$args['acctid']);
             output_link("deviantart",$args['acctid']);
-            if (get_module_setting("show_dribbble")==1){
-                if ($user_dribbble>""){
-                    rawoutput("<a href='https://dribbble.com/$user_dribbble' target='_blank'><img src='modules/sociallinks/images/dribbble.svg' alt='Dribbble' title='Dribbble' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_facebook")==1){
-                if ($user_facebook>""){
-                    rawoutput("<a href='https://facebook.com/$user_facebook' target='_blank'><img src='modules/sociallinks/images/facebook.svg' alt='Facebook' title='Facebook' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_flickr")==1){
-                if ($user_flickr>""){
-                    rawoutput("<a href='https://flickr.com/$user_flickr' target='_blank'><img src='modules/sociallinks/images/flickr.svg' alt='Flickr' title='Flickr' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_flist")==1){
-                if ($user_flist>""){
-                    rawoutput("<a href='https://www.f-list.net/c/$user_flist' target='_blank'><img src='modules/sociallinks/images/flist.svg' alt='F-List' title='F-List' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_furaffinity")==1){
-                if ($user_furaffinity>""){
-                    rawoutput("<a href='https://www.furaffinity.net/user/$user_furaffinity' target='_blank'><img src='modules/sociallinks/images/furaffinity.svg' alt='FurAffinity' title='FurAffinity' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_github")==1){
-                if ($user_github>""){
-                    rawoutput("<a href='https://www.github.com/$user_github' target='_blank'><img src='modules/sociallinks/images/github.svg' alt='GitHub' title='GitHub' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_mastodon")==1){
-                if ($user_mastodon>""){
-                    rawoutput("<a href='https://mastodon.social/@$user_mastodon' target='_blank'><img src='modules/sociallinks/images/mastodon.svg' alt='Mastodon' title='Mastodon' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_patreon")==1){
-                if ($user_patreon>""){
-                    rawoutput("<a href='https://www.patreon.com/$user_patreon' target='_blank'><img src='modules/sociallinks/images/patreon.svg' alt='Patreon' title='Patreon' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_pinterest")==1){
-                if ($user_pinterest>""){
-                    rawoutput("<a href='https://pinterest.com/$user_pinterest' target='_blank'><img src='modules/sociallinks/images/pinterest.svg' alt='Pinterest' title='Pinterest' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_reddit")==1){
-                if ($user_reddit>""){
-                    rawoutput("<a href='https://www.reddit.com/user/$user_reddit' target='_blank'><img src='modules/sociallinks/images/reddit.svg' alt='Reddit' title='Reddit' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_skype")==1){
-                if ($user_skype>""){
-                    rawoutput("<a href='skype:$user_skype?chat' target='_blank'><img src='modules/sociallinks/images/skype.svg' alt='Skype' title='Skype' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_snapchat")==1){
-                if ($user_snapchat>""){
-                    rawoutput("<a href='https://www.snapchat.com/add/$user_snapchat' target='_blank'><img src='modules/sociallinks/images/snapchat.svg' alt='Snapchat' title='Snapchat' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_steam")==1){
-                if ($user_steam>""){
-                    rawoutput("<a href='https://steamcommunity.com/id/$user_steam' target='_blank'><img src='modules/sociallinks/images/steam.svg' alt='Steam' title='Steam' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_tumblr")==1){
-                if ($user_tumblr>""){
-                    rawoutput("<a href='https://$user_tumblr.tumblr.com' target='_blank'><img src='modules/sociallinks/images/tumblr.svg' alt='Tumblr' title='Tumblr' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_twitter")==1){
-                if ($user_twitter>""){
-                    rawoutput("<a href='https://twitter.com/$user_twitter' target='_blank'><img src='modules/sociallinks/images/twitter.svg' alt='Twitter' title='Twitter' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_vimeo")==1){
-                if ($user_vimeo>""){
-                    rawoutput("<a href='https://vimeo.com/$user_vimeo' target='_blank'><img src='modules/sociallinks/images/vimeo.svg' alt='Vimeo' title='Vimeo' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_youtube")==1){
-                if ($user_youtube>""){
-                    rawoutput("<a href='https://www.youtube.com/user/$user_youtube' target='_blank'><img src='modules/sociallinks/images/youtube.svg' alt='YouTube' title='YouTube' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_website")==1){
-                if ($user_website>""){
-                    rawoutput("<a href='$user_website' target='_blank'><img src='modules/sociallinks/images/link.svg' alt='Website' title='Website' style='width: 32px; height: 32px;'></a>");
-                }
-            }
+            output_link("dribbble",$args['acctid']);
+            output_link("facebook",$args['acctid']);
+            output_link("flickr",$args['acctid']);
+            output_link("flist",$args['acctid']);
+            output_link("furaffinity",$args['acctid']);
+            output_link("furrynetwork",$args['acctid']);
+            output_link("goodreads",$args['acctid']);
+            output_link("github",$args['acctid']);
+            output_link("instagram",$args['acctid']);
+            output_link("ko-fi",$args['acctid']);
+            output_link("livejournal",$args['acctid']);
+            output_link("mastodon",$args['acctid']);
+            output_link("patreon",$args['acctid']);
+            output_link("pinterest",$args['acctid']);
+            output_link("reddit",$args['acctid']);
+            output_link("skype",$args['acctid']);
+            output_link("snapchat",$args['acctid']);
+            output_link("steam",$args['acctid']);
+            output_link("telegram",$args['acctid']);
+            output_link("tiktok",$args['acctid']);
+            output_link("tumblr",$args['acctid']);
+            output_link("twitter",$args['acctid']);
+            output_link("vero",$args['acctid']);
+            output_link("vimeo",$args['acctid']);
+            output_link("youtube",$args['acctid']);
+            output_link("weasyl",$args['acctid']);
+            output_link("wordpress",$args['acctid']);
+            output_link("website",$args['acctid']);
+
             rawoutput("</td></tr></table>");
 
             break;
@@ -258,8 +174,7 @@ function output_link(string $linktype, int $acctid): void
         'battlenet' => array(
             'link' => "https://battle.net/__USER__",
             'image' => "modules/sociallinks/images/battlenet.svg",
-            'title' => 'Battle.NET'
-
+            'title' => 'Battle.Net'
         ),
         'blogger' => array(
             'link' => "https://__USER__.blogspot.com",
@@ -274,7 +189,152 @@ function output_link(string $linktype, int $acctid): void
             'link' => "https://__USER__.deviantart.com",
             'image' => "modules/sociallinks/images/deviantart.svg",
             'title' => 'DeviantArt'
-        )
+        ),
+        'dribbble' => array(
+            'link' => "https://dribbble.com/__USER__",
+            'image' => "modules/sociallinks/images/dribbble.svg",
+            'title' => 'Dribbble'
+        ),
+        'facebook' => array(
+            'link' => "https://www.facebook.com/__USER__",
+            'image' => "modules/sociallinks/images/facebook.svg",
+            'title' => 'Facebook'
+        ),
+        'flickr' => array(
+            'link' => "https://www.flickr.com/photos/__USER__",
+            'image' => "modules/sociallinks/images/flickr.svg",
+            'title' => 'Flickr'
+        ),
+        'flist' => array(
+            'link' => "https://www.f-list.net/c/__USER__",
+            'image' => "modules/sociallinks/images/flist.svg",
+            'title' => 'F-List'
+        ),
+        'furaffinity' => array(
+            'link' => "https://www.furaffinity.net/user/__USER__",
+            'image' => "modules/sociallinks/images/furaffinity.svg",
+            'title' => 'FurAffinity'
+        ),
+        'furrynetwork' => array(
+            'link' => "https://www.furrynetwork.com/__USER__",
+            'image' => "modules/sociallinks/images/furrynetwork.svg",
+            'title' => 'Furry Network'
+        ),
+        'goodreads' => array(
+            'link' => "https://www.goodreads.com/__USER__",
+            'image' => "modules/sociallinks/images/goodreads.svg",
+            'title' => 'Goodreads'
+        ),
+        'github' => array(
+            'link' => "https://www.github.com/__USER__",
+            'image' => "modules/sociallinks/images/github.svg",
+            'title' => 'GitHub'
+        ),
+        'instagram' => array(
+            'link' => "https://www.instagram.com/__USER__",
+            'image' => "modules/sociallinks/images/instagram.svg",
+            'title' => 'Instagram'
+        ),
+        'ko-fi' => array(
+            'link' => "https://ko-fi.com/__USER__",
+            'image' => "modules/sociallinks/images/ko-fi.svg",
+            'title' => 'Ko-Fi'
+        ),
+        'livejournal' => array(
+            'link' => "https://__USER__.livejournal.com",
+            'image' => "modules/sociallinks/images/livejournal.svg",
+            'title' => 'LiveJournal'
+        ),
+        'mastodon' => array(
+            'link' => "__USER__",
+            'image' => "modules/sociallinks/images/mastodon.svg",
+            'title' => 'Mastodon'
+        ),
+        'patreon' => array(
+            'link' => "https://www.patreon.com/__USER__",
+            'image' => "modules/sociallinks/images/patreon.svg",
+            'title' => 'Patreon'
+        ),
+        'pinterest' => array(
+            'link' => "https://www.pinterest.com/__USER__",
+            'image' => "modules/sociallinks/images/pinterest.svg",
+            'title' => 'Pinterest'
+        ),
+        'reddit' => array(
+            'link' => "https://www.reddit.com/user/__USER__",
+            'image' => "modules/sociallinks/images/reddit.svg",
+            'title' => 'Reddit'
+        ),
+        'skype' => array(
+            'link' => "skype:__USER__?chat",
+            'image' => "modules/sociallinks/images/skype.svg",
+            'title' => 'Skype'
+        ),
+        'snapchat' => array(
+            'link' => "https://www.snapchat.com/add/__USER__",
+            'image' => "modules/sociallinks/images/snapchat.svg",
+            'title' => 'Snapchat'
+        ),
+        'steam' => array(
+            'link' => "https://steamcommunity.com/id/__USER__",
+            'image' => "modules/sociallinks/images/steam.svg",
+            'title' => 'Steam'
+        ),
+        'telegram' => array(
+            'link' => "https://t.me/__USER__",
+            'image' => "modules/sociallinks/images/telegram.svg",
+            'title' => 'Telegram'
+        ),
+        'tiktok' => array(
+            'link' => "https://www.tiktok.com/@__USER__",
+            'image' => "modules/sociallinks/images/tiktok.svg",
+            'title' => 'TikTok'
+        ),
+        'tumblr' => array(
+            'link' => "https://__USER__.tumblr.com",
+            'image' => "modules/sociallinks/images/tumblr.svg",
+            'title' => 'Tumblr'
+        ),
+        'twitch' => array(
+            'link' => "https://www.twitch.tv/__USER__",
+            'image' => "modules/sociallinks/images/twitch.svg",
+            'title' => 'Twitch'
+        ),
+        'twitter' => array(
+            'link' => "https://twitter.com/__USER__",
+            'image' => "modules/sociallinks/images/twitter.svg",
+            'title' => 'Twitter'
+        ),
+        'vero' => array(
+            'link' => "https://vero.co/__USER__",
+            'image' => "modules/sociallinks/images/vero.svg",
+            'title' => 'Vero'
+        ),
+        'vimeo' => array(
+            'link' => "https://vimeo.com/__USER__",
+            'image' => "modules/sociallinks/images/vimeo.svg",
+            'title' => 'Vimeo'
+        ),
+        'youtube' => array(
+            'link' => "https://www.youtube.com/user/__USER__",
+            'image' => "modules/sociallinks/images/youtube.svg",
+            'title' => 'YouTube'
+        ),
+        'weasyl' => array(
+            'link' => "https://www.weasyl.com/~__USER__",
+            'image' => "modules/sociallinks/images/weasyl.svg",
+            'title' => 'Weasyl'
+        ),
+        'wordpress' => array(
+            'link' => "https://__USER__.wordpress.com",
+            'image' => "modules/sociallinks/images/wordpress.svg",
+            'title' => 'WordPress'
+        ),
+        'website' => array(
+            'link' => "__USER__",
+            'image' => "modules/sociallinks/images/link.svg",
+            'title' => 'Website'
+        ),
 
     );
 
