@@ -146,16 +146,8 @@ function sociallinks_dohook($hookname, $args){
                 || $user_website>""){
                 output("`n`n`c`b`@Social Links`0`b`c`n");
             }
-            if (get_module_setting("show_ao3")==1){
-                if ($user_ao3>""){
-                    rawoutput("<a href='https://archiveofourown.org/users/$user_ao3' target='_blank'><img src='modules/sociallinks/images/ao3.svg' alt='Archive of Our Own' title='Archive of Our Own' style='width: 32px; height: 32px;'></a>");
-                }
-            }
-            if (get_module_setting("show_battlenet")==1){
-                if ($user_battlenet>""){
-                    rawoutput("<a href='https://battle.net/$user_battlenet' target='_blank'><img src='modules/sociallinks/images/battlenet.svg' alt='Battle.net' title='Battle.net' style='width: 32px; height: 32px;'></a>");
-                }
-            }
+            output_link("ao3");
+            output_link("battlenet");
             if (get_module_setting("show_blogger")==1){
                 if ($user_blogger>""){
                     rawoutput("<a href='https://$user_blogger.blogspot.com' target='_blank'><img src='modules/sociallinks/images/blogger.svg' alt='Blogger' title='Blogger' style='width: 32px; height: 32px;'></a>");
@@ -274,6 +266,42 @@ function sociallinks_dohook($hookname, $args){
             break;
     }
     return $args;
+}
+$links=array(
+    'ao3' => array (
+        'link' => "https://archiveofourown.org/users/__USER__",
+        'image' => "modules/sociallinks/images/ao3.svg",
+        'title' => 'Archive of Our Own'
+
+    ),
+    'battlenet' => array(
+        'link' => "https://battle.net/__USER__",
+        'image' => "modules/sociallinks/images/battlenet.svg",
+        'title' => 'Battle.NET'
+
+    )
+
+
+);
+/**
+ * @param string $user_ao3
+ * @return void
+ */
+function output_link(string $linktype): void
+{
+    global $links;
+    $uservar="user_$linktype";
+    $link_details=$links[$linktype];
+    $link=$link_details['link'];
+
+    $link=str_replace("__USER__",$$uservar,$link);
+    if (get_module_setting("show_$linktype") == 1) {
+        if ($$uservar > "") {
+            $image=$link_details['image'];
+            $title=$link_details['title'];
+            rawoutput("<a href='$link' target='_blank'><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'></a>");
+        }
+    }
 }
 
 function sociallinks_run(){
