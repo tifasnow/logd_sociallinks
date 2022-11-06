@@ -17,7 +17,7 @@ function sociallinks_getmoduleinfo(){
         "prefs" => array(
             "Social Links,title",
             "user_ao3" => "AO3 Username|",
-            "userbattlenet" => "Battle.net Username|",
+            "user_battlenet" => "Battle.net Username|",
             "user_blogger" => "Blogger Username|",
             "user_deviantart" => "DeviantArt Username|",
             "user_discord" => "Discord Username|",
@@ -88,9 +88,7 @@ function sociallinks_dohook($hookname, $args){
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
 
-            $user_ao3 = get_module_pref("user_ao3", "sociallinks", $args['acctid']);
-            $user_ao3 = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_ao3));
-            $user_battlenet = get_module_pref("userbattlenet", "sociallinks", $args['acctid']);
+            $user_battlenet = get_module_pref("user_battlenet", "sociallinks", $args['acctid']);
             $user_battlenet = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_battlenet));
             $user_blogger = get_module_pref("user_blogger", "sociallinks", $args['acctid']);
             $user_blogger = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_blogger));
@@ -135,19 +133,9 @@ function sociallinks_dohook($hookname, $args){
             $user_website = get_module_pref("user_website", "sociallinks", $args['acctid']);
             $user_website = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$user_website));
 
-            if ($user_ao3 >""
-                || $user_battlenet>"" || $user_blogger>"" || $user_deviantart>""
-                || $user_discord>"" || $user_dribbble>"" || $user_facebook>""
-                || $user_flickr>"" || $user_flist>"" || $user_furaffinity>""
-                || $user_github>"" || $user_mastodon>"" || $user_patreon>""
-                || $user_pinterest>"" || $user_reddit>"" || $user_skype>""
-                || $user_snapchat>"" || $user_steam>"" || $user_tumblr>""
-                || $user_twitter>"" || $user_vimeo>"" || $user_youtube>""
-                || $user_website>""){
-                output("`n`n`c`b`@Social Links`0`b`c`n");
-            }
-            output_link("ao3");
-            output_link("battlenet");
+            output("`n`n`c`b`@Social Links`0`b`c`n");
+            output_link("ao3", $args['acctid']);
+            output_link("battlenet",$args['acctid']);
             if (get_module_setting("show_blogger")==1){
                 if ($user_blogger>""){
                     rawoutput("<a href='https://$user_blogger.blogspot.com' target='_blank'><img src='modules/sociallinks/images/blogger.svg' alt='Blogger' title='Blogger' style='width: 32px; height: 32px;'></a>");
@@ -267,36 +255,42 @@ function sociallinks_dohook($hookname, $args){
     }
     return $args;
 }
-$links=array(
-    'ao3' => array (
-        'link' => "https://archiveofourown.org/users/__USER__",
-        'image' => "modules/sociallinks/images/ao3.svg",
-        'title' => 'Archive of Our Own'
 
-    ),
-    'battlenet' => array(
-        'link' => "https://battle.net/__USER__",
-        'image' => "modules/sociallinks/images/battlenet.svg",
-        'title' => 'Battle.NET'
-
-    )
-
-
-);
 /**
  * @param string $user_ao3
  * @return void
  */
-function output_link(string $linktype): void
+function output_link(string $linktype, int $acctid): void
 {
-    global $links;
+    $links_arr=array(
+        'ao3' => array (
+            'link' => "https://archiveofourown.org/users/__USER__",
+            'image' => "modules/sociallinks/images/ao3.svg",
+            'title' => 'Archive of Our Own'
+
+        ),
+        'battlenet' => array(
+            'link' => "https://battle.net/__USER__",
+            'image' => "modules/sociallinks/images/battlenet.svg",
+            'title' => 'Battle.NET'
+
+        )
+
+
+    );
     $uservar="user_$linktype";
-    if(isset($links[$linktype])) {
-        $link_details = $links[$linktype];
+    $$uservar = get_module_pref($uservar, "sociallinks", $acctid);
+    $$uservar = stripslashes(preg_replace("'[\"\'\\><@?*&#; ]'","",$$uservar));
+    debuglog("links is: ".print_r($links_arr,true));
+    debuglog("uservar is $uservar");
+    debuglog("is set? ".isset($links_arr[$linktype]));
+    if(isset($links_arr[$linktype])) {
+        $link_details = $links_arr[$linktype];
         $link = $link_details['link'];
 
         $link = str_replace("__USER__", $$uservar, $link);
-        if ($$uservar > "" && (get_module_setting("show_$linktype") === 1) ) {
+        debuglog("Uservar: ".$$uservar." link: ".$link);
+        if ($$uservar > "" && (get_module_setting("show_$linktype") == 1) ) {
             $image = $link_details['image'];
             $title = $link_details['title'];
             rawoutput("<a href='$link' target='_blank'><img src='$image' alt='$title' title='$title' style='width: 32px; height: 32px;'></a>");
