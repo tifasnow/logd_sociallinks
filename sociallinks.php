@@ -2,7 +2,9 @@
 /* Social Links on Bio Page module by aimeesunflower
 An optional module for PHP versions of Legend of the Green Dragon
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
-To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/*/
+To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
+CC-BY-SA 4.0 github:aimeesunflower https://github.com/aimeesunflower/logd_sociallinks/
+*/
 
 function sociallinks_getmoduleinfo(){
     $info = array (
