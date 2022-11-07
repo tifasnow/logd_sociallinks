@@ -3,7 +3,9 @@
 An optional module for PHP versions of Legend of the Green Dragon.
 This module adds social links to the bio page.
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
+This module is not required for the game to function.
 To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
+A selection of icons are included with the module. See the readme for more information.
 The Social Links can be added to the user's bio by Navigating to the set location in Tavern Street in the Village Square.
 CC-BY-SA 4.0 github:tifasnow https://github.com/tifasnow/logd_sociallinks/
     */
