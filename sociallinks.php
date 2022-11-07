@@ -917,7 +917,7 @@ function output_link(string $linktype, int $acctid): void
 
     $uservar="user_$linktype";
     $var = get_module_pref($uservar, "sociallinks", $acctid);
-    $var = stripslashes(preg_replace("'[\"\'\\><@?*&; ]'","",$var));
+    $var = stripslashes($var);
     if(isset($links_arr[$linktype])) {
         $link_details = $links_arr[$linktype];
 
