@@ -1,9 +1,11 @@
 <?php
 /* Social Links on Bio Page module by Tifa Zabat
-An optional module for PHP versions of Legend of the Green Dragon
+An optional module for PHP versions of Legend of the Green Dragon.
+This module adds social links to the bio page.
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
 To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
-    CC-BY-SA 4.0 github:tifasnow https://github.com/tifasnow/logd_sociallinks/
+The Social Links can be added to the user's bio by Navigating to the set location in Tavern Street in the Village Square.
+CC-BY-SA 4.0 github:tifasnow https://github.com/tifasnow/logd_sociallinks/
     */
 
 function sociallinks_getmoduleinfo(){
@@ -16,6 +18,7 @@ function sociallinks_getmoduleinfo(){
         "download" => "https://github.com/tifasnow/logd_sociallinks",
         "prefs" => array(
             "Social Links,title",
+            "showarea" => "Show Social Links on Village?,bool|0",
             "user_500px" => "500px Username|",
             "user_ao3" => "AO3 Username|",
             "user_applemusic" => "Apple Music Username|",
@@ -126,6 +129,7 @@ function sociallinks_getmoduleinfo(){
         ),
         "settings" => array(
             "Social Links Settings,title",
+            "social_nav_name" => "What do you want to call the social links navigation?|Social Links",
             "show_500px" => "Show 500px Icon?,bool|1",
             "show_ao3" => "Show AO3 icon?,bool|1",
             "show_applemusic" => "Show Apple Music icon?,bool|1",
@@ -241,6 +245,7 @@ function sociallinks_install(){
     debug("Installing Social Links on Bio Page module");
     module_addhook("bioinfo");
     module_addhook("footer-prefs");
+    module_addhook("village");
     return true;
 }
 
@@ -252,6 +257,16 @@ function sociallinks_uninstall(){
 function sociallinks_dohook($hookname, $args){
     global $session;
     switch ($hookname) {
+        case "village":
+            tlschema($args['schemas']['tavernnav']);
+            addnav($args['tavernnav']);
+            tlschema();
+            if (get_module_pref("showarea") == 1) {
+                addnav(get_module_setting("social_nav_name"), "runmodule.php?module=sociallinks");
+            }
+            /*
+            addnav("Social Links", "runmodule.php?module=sociallinks&op=edit");*/
+            break;
         case "bioinfo":
             rawoutput("<table border='0' cellpadding='2' cellspacing='0' align='center'><tr><td valign='top'>");
             output("`n`n`c`b`@Social Links`0`b`c`n");
