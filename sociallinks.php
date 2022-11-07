@@ -953,6 +953,13 @@ function output_link(string $linktype, int $acctid): void
 
 function sociallinks_run(){
     global $session;
+    page_header(get_module_setting("social_nav_name"));
+    require_once("lib/villagenav.php");
+    villagenav();
+    output("`c`b`&%s`0`b`c", get_module_setting("social_nav_name"));
+    output("`n`n");
+    output("Set your Social Links here to appear in your user bio. Once you are done, hit 'Save' to save your changes.`n`n");
+    page_footer();
 }
 
 ?>
