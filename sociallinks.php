@@ -9,7 +9,7 @@ To get the icons for the various social media profiles, I reccomend using a site
 function sociallinks_getmoduleinfo(){
     $info = array (
         "name" => "Social Links on Bio Page",
-        "version" => "2022.11.04",
+        "version" => "2022.11.05",
         "author" => "<a href='https://github.com/tifasnow/' target=_new>Tifa Zabat</a>",
         "category" => "User",
         "description" => "Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.",
@@ -114,7 +114,6 @@ function sociallinks_getmoduleinfo(){
             "user_wechat" => "WeChat Username|",
             "user_whatsapp" => "WhatsApp Username|",
             "user_wikipedia" => "Wikipedia Username|",
-            "user_wikia" => "Wikia Username|",
             "user_wikidot" => "Wikidot Username|",
             "user_wikimedia" => "Wikimedia Username|",
             "user_wordpress" => "WordPress Username|",
@@ -225,7 +224,6 @@ function sociallinks_getmoduleinfo(){
             "show_wechat" => "Show WeChat icon?,bool|1",
             "show_whatsapp" => "Show WhatsApp icon?,bool|1",
             "show_wikipedia" => "Show Wikipedia icon?,bool|1",
-            "show_wikia" => "Show Wikia icon?,bool|1",
             "show_wikidot" => "Show Wikidot icon?,bool|1",
             "show_wikimedia" => "Show Wikimedia icon?,bool|1",
             "show_wordpress" => "Show WordPress icon?,bool|1",
@@ -355,7 +353,6 @@ function sociallinks_dohook($hookname, $args){
             output_link("wechat",$args['acctid']);
             output_link("whatsapp",$args['acctid']);
             output_link("wikipedia",$args['acctid']);
-            output_link("wikia",$args['acctid']);
             output_link("wikidot",$args['acctid']);
             output_link("wikimedia",$args['acctid']);
             output_link("wordpress",$args['acctid']);
@@ -387,7 +384,7 @@ function output_link(string $linktype, int $acctid): void
 {
     $links_arr=array(
         "500px" => array (
-            "icon" => "500px",
+            "icon" => "modules/sociallinks/500px.svg",
             "url" => "https://500px.com/_USER_",
             "title" => "500px",
         ),
@@ -423,7 +420,7 @@ function output_link(string $linktype, int $acctid): void
         ),
         'battlenet' => array(
             'link' => "https://battle.net/__USER__",
-            'image' => "modules/sociallinks/images/battlenet.svg",
+            'image' => "modules/sociallinks/images/battledotnet.svg",
             'title' => 'Battle.Net'
         ),
         'blogger' => array(
@@ -437,7 +434,7 @@ function output_link(string $linktype, int $acctid): void
             'title' => 'Canva'
         ),
         'cashapp' => array(
-            'link' => "https://cash.app/$__USER__",
+            'link' => "https://cash.app/__USER__",
             'image' => "modules/sociallinks/images/cashapp.svg",
             'title' => 'CashApp'
         ),
@@ -467,7 +464,7 @@ function output_link(string $linktype, int $acctid): void
         ),
         'devto' => array(
             'link' => "https://dev.to/__USER__",
-            'image' => "modules/sociallinks/images/devto.svg",
+            'image' => "modules/sociallinks/images/devdotto.svg",
             'title' => 'Dev.to'
         ),
         'dribbble' => array(
@@ -582,7 +579,7 @@ function output_link(string $linktype, int $acctid): void
         ),
         'itchio' => array(
             'link' => "https://__USER__.itch.io",
-            'image' => "modules/sociallinks/images/itchio.svg",
+            'image' => "modules/sociallinks/images/itchdotio.svg",
             'title' => 'Itch.io'
         ),
         'keybase' => array(
@@ -602,12 +599,12 @@ function output_link(string $linktype, int $acctid): void
         ),
         'ko-fi' => array(
             'link' => "https://ko-fi.com/__USER__",
-            'image' => "modules/sociallinks/images/ko-fi.svg",
+            'image' => "modules/sociallinks/images/kofi.svg",
             'title' => 'Ko-Fi'
         ),
         'lastfm' => array(
             'link' => "https://www.last.fm/user/__USER__",
-            'image' => "modules/sociallinks/images/lastfm.svg",
+            'image' => "modules/sociallinks/images/lastdotfm.svg",
             'title' => 'Last.fm'
         ),
         'LINE' => array(
@@ -875,11 +872,6 @@ function output_link(string $linktype, int $acctid): void
             'image' => "modules/sociallinks/images/wikipedia.svg",
             'title' => 'Wikipedia'
         ),
-        'wikia' => array(
-            'link' => "https://__USER__.wikia.com",
-            'image' => "modules/sociallinks/images/wikia.svg",
-            'title' => 'Wikia'
-        ),
         'wikidot' => array(
             'link' => "https://__USER__.wikidot.com",
             'image' => "modules/sociallinks/images/wikidot.svg",
@@ -887,7 +879,7 @@ function output_link(string $linktype, int $acctid): void
         ),
         'wikimedia' => array(
             'link' => "https://commons.wikimedia.org/wiki/User:__USER__",
-            'image' => "modules/sociallinks/images/wikimedia.svg",
+            'image' => "modules/sociallinks/images/wikimediacommons.svg",
             'title' => 'Wikimedia'
         ),	
         'wordpress' => array(
@@ -902,7 +894,7 @@ function output_link(string $linktype, int $acctid): void
         ),
         'xda' => array(
             'link' => "https://forum.xda-developers.com/member.php?u=__USER__",
-            'image' => "modules/sociallinks/images/xda.svg",
+            'image' => "modules/sociallinks/images/xdadevelopers.svg",
             'title' => 'XDA'
         ),
         'yahoo' => array(
