@@ -648,12 +648,10 @@ function output_link(string $linktype, int $acctid): void
             'title' => 'Nextdoor'
         ),
         'nintendo3ds' => array(
-            'link' => "__USER__",
             'image' => "modules/sociallinks/images/nintendo3ds.svg",
             'title' => 'Nintendo 3DS'
         ),
         'nintendoswitch' => array(
-            'link' => "__USER__",
             'image' => "modules/sociallinks/images/nintendoswitch.svg",
             'title' => 'Nintendo Switch'
         ),
