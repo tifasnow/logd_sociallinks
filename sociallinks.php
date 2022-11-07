@@ -236,7 +236,7 @@ function sociallinks_getmoduleinfo(){
             "show_xbox" => "Show Xbox Live icon?,bool|1",
             "show_xda" => "Show XDA Developers icon?,bool|1",
             "show_yahoo" => "Show Yahoo icon?,bool|1",
-            "user_youtube" => "YouTube Username|",
+            "show_youtube" => "Show YouTube icon?,bool|1",
             "show_website" => "Show Website icon?,bool|1",
         ),
     );
