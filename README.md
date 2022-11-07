@@ -107,13 +107,12 @@ PHP
  95. Weasyl
  96. WeChat
  97. WhatsApp
- 98. Wikia
- 99. Wikidot
- 100. Wikimedia
- 101. Wikipedia
- 102. WordPress
- 103. Xbox
- 104. XDA Developers
- 105. Yahoo
- 106. YouTube
- 107. Website
+ 98. Wikidot
+ 99. Wikimedia
+ 100. Wikipedia
+ 101. WordPress
+ 102. Xbox
+ 103. XDA Developers
+ 104. Yahoo
+ 105. YouTube
+ 106. Website
