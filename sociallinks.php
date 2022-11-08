@@ -3,9 +3,7 @@
 An optional module for PHP versions of Legend of the Green Dragon.
 This module adds social links to the bio page.
 Allows users to link to their Social Accounts from their Bio Pages with addition of a new field in the user profile.
-This module is not required for the game to function.
 To get the icons for the various social media profiles, I reccomend using a site such as Simple Icons https://simpleicons.org/ or Font Awesome https://fontawesome.com/
-A selection of icons are included with the module. See the readme for more information.
 The Social Links can be added to the user's bio by Navigating to the set location in Tavern Street in the Village Square.
 CC-BY-SA 4.0 github:tifasnow https://github.com/tifasnow/logd_sociallinks/
     */
@@ -27,7 +25,7 @@ function sociallinks_getmoduleinfo(){
             "user_applepodcasts" => "Apple Podcasts Username|",
             "user_askfm" => "Ask.fm Username|",
             "user_bandcamp" => "Bandcamp Username|",
-            "user_behance" => "Behance Username|",	
+            "user_behance" => "Behance Username|",
             "user_battlenet" => "Battle.net Username|",
             "user_blogger" => "Blogger Username|",
             "user_canva" => "Canva Username|",
@@ -62,10 +60,10 @@ function sociallinks_getmoduleinfo(){
             "user_instagram" => "Instagram Username|",
             "user_itchio" => "Itch.io Username|",
             "user_keybase" => "Keybase Username|",
-            "user_kickstarter" => "Kickstarter Username|",	
+            "user_kickstarter" => "Kickstarter Username|",
             "user_kik" => "Kik Username|",
             "user_ko-fi" => "Ko-fi Username|",
-            "user_lastfm" => "Last.fm Username|",	
+            "user_lastfm" => "Last.fm Username|",
             "user_LINE" => "LINE Username|",
             "user_linkedin" => "LinkedIn Username|",
             "user_livejournal" => "LiveJournal Username|",
@@ -127,7 +125,7 @@ function sociallinks_getmoduleinfo(){
             "user_yahoo" => "Yahoo Username|",
             "user_youtube" => "YouTube Username|",
             "user_website" => "Website URL|",
-            
+
         ),
         "settings" => array(
             "Social Links Settings,title",
@@ -171,10 +169,10 @@ function sociallinks_getmoduleinfo(){
             "show_imdb" => "Show IMDb icon?,bool|1",
             "show_imgur" => "Show Imgur icon?,bool|1",
             "show_instagram" => "Show Instagram icon?,bool|1",
-            "show_itchio" => "Show Itch.io icon?,bool|1",	
+            "show_itchio" => "Show Itch.io icon?,bool|1",
             "show_keybase" => "Show Keybase icon?,bool|1",
             "show_kickstarter" => "Show Kickstarter icon?,bool|1",
-            "show_kik" => "Show Kik icon?,bool|1", 
+            "show_kik" => "Show Kik icon?,bool|1",
             "show_ko-fi" => "Show Ko-fi icon?,bool|1",
             "show_lastfm" => "Show Last.fm icon?,bool|1",
             "show_LINE" => "Show LINE icon?,bool|1",
@@ -199,7 +197,7 @@ function sociallinks_getmoduleinfo(){
             "show_quora" => "Show Quora icon?,bool|1",
             "show_reddit" => "Show Reddit icon?,bool|1",
             "show_roblox" => "Show Roblox icon?,bool|1",
-            "show_rocketleague" => "Show Rocket League icon?,bool|1",	
+            "show_rocketleague" => "Show Rocket League icon?,bool|1",
             "show_scp" => "Show SCP Wiki icon?,bool|1",
             "show_scratch" => "Show Scratch icon?,bool|1",
             "show_skype" => "Show Skype icon?,bool|1",
@@ -217,9 +215,9 @@ function sociallinks_getmoduleinfo(){
             "show_tumblr" => "Show Tumblr icon?,bool|1",
             "show_twitter" => "Show Twitter icon?,bool|1",
             "show_twitch" => "Show Twitch icon?,bool|1",
-            "show_ubisoft" => "Show Ubisoft icon?,bool|1",	
+            "show_ubisoft" => "Show Ubisoft icon?,bool|1",
             "show_unsplash" => "Show Unsplash icon?,bool|1",
-            "show_vero" => "Show Vero icon?,bool|1",	
+            "show_vero" => "Show Vero icon?,bool|1",
             "show_venmo" => "Show Venmo icon?,bool|1",
             "show_viber" => "Show Viber icon?,bool|1",
             "show_vimeo" => "Show Vimeo icon?,bool|1",
@@ -236,7 +234,7 @@ function sociallinks_getmoduleinfo(){
             "show_xbox" => "Show Xbox Live icon?,bool|1",
             "show_xda" => "Show XDA Developers icon?,bool|1",
             "show_yahoo" => "Show Yahoo icon?,bool|1",
-            "show_youtube" => "Show YouTube icon?,bool|1",
+            "user_youtube" => "YouTube Username|",
             "show_website" => "Show Website icon?,bool|1",
         ),
     );
@@ -245,7 +243,7 @@ function sociallinks_getmoduleinfo(){
 
 function sociallinks_install(){
     debug("Installing Social Links on Bio Page module");
-    module_addhook("bioinfo");
+    module_addhook_priority("bioinfo",80);
     module_addhook("footer-prefs");
     module_addhook("village");
     return true;
@@ -393,15 +391,10 @@ function sociallinks_dohook($hookname, $args){
     return $args;
 }
 
-/**
- * @param string $user_ao3
- * @return void
- */
-function output_link(string $linktype, int $acctid): void
-{
-    $links_arr=array(
+function get_link_data() {
+    return array(
         "500px" => array (
-            "icon" => "modules/sociallinks/500px.svg",
+            "image" => "modules/sociallinks/500px.svg",
             "url" => "https://500px.com/_USER_",
             "title" => "500px",
         ),
@@ -896,7 +889,7 @@ function output_link(string $linktype, int $acctid): void
             'link' => "https://commons.wikimedia.org/wiki/User:__USER__",
             'image' => "modules/sociallinks/images/wikimediacommons.svg",
             'title' => 'Wikimedia'
-        ),	
+        ),
         'wordpress' => array(
             'link' => "https://__USER__.wordpress.com",
             'image' => "modules/sociallinks/images/wordpress.svg",
@@ -924,11 +917,19 @@ function output_link(string $linktype, int $acctid): void
         ),
         'website' => array(
             'link' => "__USER__",
-            'image' => "modules/sociallinks/images/link.svg",
+            'image' => "modules/sociallinks/images/website.svg",
             'title' => 'Website'
         ),
 
     );
+}
+/**
+ * @param string $user_ao3
+ * @return void
+ */
+function output_link(string $linktype, int $acctid): void
+{
+    $links_arr=get_link_data();
 
     $uservar="user_$linktype";
     $var = get_module_pref($uservar, "sociallinks", $acctid);
@@ -953,14 +954,128 @@ function output_link(string $linktype, int $acctid): void
     }
 }
 
+function searchbox($linkType) {
+
+if($linkType===false) {
+    $linkType="NANONE";
+}
+    $jsScript = <<<TAG
+<select id="social-links-$linkType" class="social-links-$linkType" name="social-links-$linkType" style=width:100%>
+    __data__
+</select>
+<script>
+function formatSocial(social) {
+    if(!social.id)
+        return social.text;
+     var baseUrl = "modules/sociallinks/images/";
+     var ssocial = $(
+    '<span><img class="img-flag" /> <span></span></span>'
+  );
+     // Use .text() instead of HTML string concatenation to avoid script injection issues
+  ssocial.find("span").text(social.text);
+  ssocial.find("img").attr("src", baseUrl + "/" + social.element.value.toLowerCase() + ".svg");
+
+  return ssocial;
+}
+ $('.social-links-$linkType').select2(
+     {
+     templateSelection: formatSocial
+     }
+ );
+</script>
+
+
+TAG;
+    $dat="";
+    if($linkType==="NANONE")
+    {
+        $dat.="<option value=\"none\" selected>None</option>";
+    }
+    foreach (get_link_data() as $key=>$value) {
+
+        $imagesrc=$value['image'];
+        $val=$value['title'];
+        $selected = $key===$linkType ? "selected": "";
+        $dat.="<option value=\"$key\" $selected>$val</option>";
+    }
+    $jsScript=str_replace("__data__",$dat,$jsScript);
+    rawoutput($jsScript);
+}
 function sociallinks_run(){
     global $session;
+    $op=httpget('op');
+    $selected_type=httpget("type");
+
     page_header(get_module_setting("social_nav_name"));
     require_once("lib/villagenav.php");
     villagenav();
+    switch($op) {
+        case "delete":
+            set_module_pref("user_$selected_type","");
+            break;
+        case "save":
+            $incoming=httpallpost();
+            foreach(get_link_data() as $key=>$value) {
+                if(isset($incoming["social-links-$key"])) {
+                    $keyval=$key."_value";
+                    set_module_pref("user_$key",$incoming[$keyval]);
+                }
+            }
+            if(isset($incoming['new_item'])) {
+                set_module_pref("user_".$incoming['social-links-NANONE'],$incoming['new_item']);
+            }
+
+            break;
+        default:
+            ;
+
+    }
     output("`c`b`&%s`0`b`c", get_module_setting("social_nav_name"));
     output("`n`n");
     output("Set your Social Links here to appear in your user bio. Once you are done, hit 'Save' to save your changes.`n`n");
+    rawoutput("<div id=\"react-social\"></div>");
+    $style = <<<TAG
+<style>
+img.img-flag {
+    margin: 0!important;
+    display: inherit!important;
+    height: 15px;
+    width: 18px
+}
+.select2-dropdown {
+background-color: #003800;
+}
+.select2-results__option--selected{
+background-color: #008900 !important;
+}
+</style>
+TAG;
+    rawoutput($style);
+    rawoutput("<FORM action='runmodule.php?module=sociallinks&op=save' method='POST' >");
+    addnav("","runmodule.php?module=sociallinks&op=save");
+    rawoutput("<TABLE><THEAD><TR><th>Select the Social Link type</th><th>Username</th><th></th></TR></THEAD><TBODY>");
+    foreach (get_link_data() as $key => $value) {
+        $user_val = get_module_pref("user_$key");
+        if (trim($user_val) !== "") {
+            rawoutput("<tr><td>");
+            searchbox($key);
+            $keyval=$key."_value";
+            rawoutput("</td><td><input type='text' placeholder='username' name='$keyval' value='$user_val'/></td><td><a  class='delete_button' href='runmodule.php?module=sociallinks&op=delete&type=$key'>Delete</a></td></tr>");
+            addnav("", "runmodule.php?module=sociallinks&op=delete&type=$key");
+        }
+    }
+    if($op==="add") {
+        rawoutput("<tr><td>");
+        searchbox(false);
+        rawoutput("</td><td><input type='text' placeholder='username' name='new_item' /></td><td><a  class='delete_button' href='runmodule.php?module=sociallinks'>Cancel</a></td></tr>");
+        addnav("", "runmodule.php?module=sociallinks");
+    }
+
+    rawoutput("</TBODY></TABLE>");
+    rawoutput("<button type='submit'>Save</button>");
+    rawoutput("</FORM>");
+    rawoutput("<a class=\"add_button\" href='runmodule.php?module=sociallinks&op=add'>Add New Social Link</a>");
+    addnav("","runmodule.php?module=sociallinks&op=add");
     page_footer();
 }
 
